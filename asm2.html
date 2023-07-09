@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dynamic Text App</title>
+</head>
+<body>
+    <h2>Dynamic Text App</h2>
+    <input type="text" id="textInput" placeholder="Enter text">
+    <ul id="textList"></ul>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var textInput = document.getElementById("textInput");
+            var textList = document.getElementById("textList");
+
+            textInput.addEventListener("keypress", function(event) {
+                if (event.key === "Enter") {
+                    event.preventDefault(); // Prevent form submission
+                    var text = textInput.value.trim();
+                    if (text !== "") {
+                        var listItem = document.createElement("li");
+                        listItem.textContent = text;
+                        textList.appendChild(listItem);
+                        textInput.value = "";
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
